@@ -1,18 +1,21 @@
-import TerminalUtil from "arquitetura_hexagonal/arquitetura_hexagonal/src/app/util/TerminalUtil";
-import { terminal } from "terminal-kit";
+import TerminalUtil from "@/app/util/terminalUtil"
+import menuFundamentos from "./menuFundamentos"
 
-export default async function menuPrincipal(){
+export default async function menuPrincipal() {
     TerminalUtil.titulo("Menu teste")
 
-    const resposta = await terminal.singleColumnMenu([
-        '1. Fundamentos',
-        'Sair'
-    ]).promise
-    
-    switch (resposta.selectedIndex) {
+    const [indice] = await TerminalUtil.menu(
+        "Escolha uma opção:",
+        ["1. Fundamentos", "Sair"]
+    )
+
+    switch (indice) {
+        case 0:
+            await menuFundamentos()
+            break
         case 1:
-            process.exit(0)        
-        default:
-            menuPrincipal();
+            process.exit(0)
     }
+
+    menuPrincipal()
 }
