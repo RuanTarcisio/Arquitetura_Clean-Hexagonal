@@ -15,6 +15,14 @@ export default class TerminalUtil {
       terminal.yellow(chave).green(valor).white('\n')
     }
 
+    static async campoRequerido(label: string, valorPadrao: string = ""): Promise<string>{
+        terminal.yellow(`\m${label}`)
+        const valor = await terminal.inputField({
+            default: valorPadrao
+        }).promise
+        if(valor) return valor
+        return TerminalUtil.campoRequerido(label)
+    }
 
     static async menu(
       texto: string,

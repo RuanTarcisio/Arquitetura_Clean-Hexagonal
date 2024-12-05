@@ -1,8 +1,8 @@
-import Fusca from "@/core/Fusca"
+import Fusca from "@/core/fundamentos/Fusca"
 import TerminalUtil from "../util/terminalUtil"
-import Ferrari from "@/core/Ferrari"
+import Ferrari from "@/core/fundamentos/Ferrari"
 
-export default async function () {
+export default async function polimorfismo() {
     TerminalUtil.titulo("Polimorfismo")
 
     const [tipoCarro] = await TerminalUtil.selecao(
