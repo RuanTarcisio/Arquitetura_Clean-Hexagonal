@@ -16,7 +16,7 @@ export default class TerminalUtil {
     }
 
     static async campoRequerido(label: string, valorPadrao: string = ""): Promise<string>{
-        terminal.yellow(`\m${label}`)
+        terminal.yellow(`\n${label}`)
         const valor = await terminal.inputField({
             default: valorPadrao
         }).promise
@@ -61,5 +61,9 @@ export default class TerminalUtil {
     static async esperarEnter(): Promise<void>{
         terminal.white("\nPressione ENTER para continuar...")
         await terminal.inputField({echo: false}).promise
+    }
+
+    static async sucesso(texto: string){
+        terminal.green(texto)
     }
 }
